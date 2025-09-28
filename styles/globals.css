@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-size: 16px;
+  --background: #f5f4f1;
+  --foreground: #1a1a1a;
+  --card: rgba(255, 255, 255, 0.8);
+  --card-foreground: #1a1a1a;
+  --popover: rgba(255, 255, 255, 0.95);
+  --popover-foreground: #1a1a1a;
+  --primary: #525252;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(156, 149, 140, 0.8);
+  --secondary-foreground: #1a1a1a;
+  --muted: rgba(189, 184, 177, 0.5);
+  --muted-foreground: #6b7280;
+  --accent: #404040;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(156, 149, 140, 0.3);
+  --input: rgba(255, 255, 255, 0.8);
+  --input-background: rgba(255, 255, 255, 0.8);
+  --switch-background: rgba(156, 149, 140, 0.5);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #525252;
+  --chart-1: #1a1a1a;
+  --chart-2: #404040;
+  --chart-3: #525252;
+  --chart-4: #737373;
+  --chart-5: #9ca38c;
+  --radius: 1rem;
+  --sidebar: rgba(255, 255, 255, 0.95);
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #525252;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(156, 149, 140, 0.8);
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: rgba(156, 149, 140, 0.3);
+  --sidebar-ring: #525252;
+}
+
+.dark {
+  --background: 25 25 25;
+  --foreground: 250 250 250;
+  --card: 25 25 25;
+  --card-foreground: 250 250 250;
+  --popover: 25 25 25;
+  --popover-foreground: 250 250 250;
+  --primary: 250 250 250;
+  --primary-foreground: 9 9 11;
+  --secondary: 39 39 42;
+  --secondary-foreground: 250 250 250;
+  --muted: 39 39 42;
+  --muted-foreground: 163 163 163;
+  --accent: 39 39 42;
+  --accent-foreground: 250 250 250;
+  --destructive: 239 68 68;
+  --destructive-foreground: 250 250 250;
+  --border: 39 39 42;
+  --input: 39 39 42;
+  --ring: 142 142 142;
+  --chart-1: 220 38 127;
+  --chart-2: 16 185 129;
+  --chart-3: 101 163 13;
+  --chart-4: 244 114 182;
+  --chart-5: 34 197 94;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    outline-color: hsl(var(--ring) / 0.5);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Ensure animations work properly */
+@layer base {
+  * {
+    transform-style: preserve-3d;
+  }
+}
