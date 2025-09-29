@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
+import { Button } from '../ui/button';
+import { Card } from '../ui/card';
 import { ArrowRight, Sparkles, Shield, Zap } from 'lucide-react';
 
 const features = [

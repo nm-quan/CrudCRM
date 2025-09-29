@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { AIDemo3D } from './ai-demo-3d';
 import { ArrowRight, Play } from 'lucide-react';
 import { InfiniteScrollSection } from './infinite_scroll';

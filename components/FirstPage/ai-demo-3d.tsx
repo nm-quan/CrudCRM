@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Maximize2 } from 'lucide-react';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
+import { Button } from '../ui/button';
+import { Card } from '../ui/card';
 
 export function AIDemo3D() {
   const [isPlaying, setIsPlaying] = useState(true);

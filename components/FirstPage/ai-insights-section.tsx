@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card } from './ui/card';
-import { Badge } from './ui/badge';
+import { Card } from '../ui/card';
+import { Badge } from '../ui/badge';
 import { Brain, Users, BarChart3, MessageSquare, Target, Lightbulb, TrendingUp, DollarSign, Zap } from 'lucide-react';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
