@@ -5,6 +5,11 @@ import { Button } from './ui/button';
 import { AIDemo3D } from './ai-demo-3d';
 import { ArrowRight, Play } from 'lucide-react';
 import { InfiniteScrollSection } from './infinite_scroll';
+import Link from 'next/link';
+
+
+
+
 
 export function HeroSection() {
   return (
@@ -66,7 +71,7 @@ export function HeroSection() {
                 </div>
               ))}
             </motion.div>
-            
+            <Link href ="/demo">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -84,11 +89,13 @@ export function HeroSection() {
                 variant="outline" 
                 size="lg"
                 className="border-border text-muted-foreground hover:bg-muted px-8 py-4 rounded-2xl group"
+              
               >
                 <Play className="mr-2 w-5 h-5" />
                 Watch Demo
               </Button>
             </motion.div>
+           </Link>
 
     
           
