@@ -88,7 +88,7 @@ export function HeroSection() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-border text-muted-foreground hover:bg-muted px-8 py-4 rounded-2xl group"
+                className="border-white border-solid  text-white bg-gray-400 hover:bg-muted px-8 py-4 rounded-2xl group"
               
               >
                 <Play className="mr-2 w-5 h-5" />
@@ -115,17 +115,7 @@ export function HeroSection() {
             <AIDemo3D />
       
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.4 }}
-              className="absolute -top-6 -right-6 bg-foreground text-background rounded-2xl shadow-lg p-4"
-            >
-              <div className="text-center">
-                <div className="text-lg text-background">98.7%</div>
-                <div className="text-xs text-background/70">Accuracy Rate</div>
-              </div>
-            </motion.div>
+         
           </motion.div>
         </div>
       </div>

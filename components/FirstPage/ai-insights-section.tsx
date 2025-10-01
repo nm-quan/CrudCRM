@@ -83,7 +83,7 @@ export function AIInsightsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent pb-4">
             How AI Agents Improve Customer Understanding
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -102,11 +102,11 @@ export function AIInsightsSection() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Resolution Percentage Chart */}
-            <Card className="p-6 bg-gradient-to-br from-card/80 to-background/80 border-border backdrop-blur-sm">
+            <Card className="p-6 bg-gradient-to-br from-white/80 to-stone-50/80 border-stone-300/50  backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-6">
                 <Target className="w-5 h-5 text-accent" />
-                <h3 className="text-lg text-foreground">Resolution Percentage</h3>
-                <Badge className="bg-muted text-foreground border-border">92%</Badge>
+                <h3 className="text-lg text-black">Resolution Percentage</h3>
+                <Badge className="bg-gray-100 text-gray-800 border-border">92%</Badge>
               </div>
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={resolutionData}>

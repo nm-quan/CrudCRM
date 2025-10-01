@@ -32,9 +32,9 @@ export function InfiniteScrollSection() {
             {[...scrollItems, ...scrollItems].map((text, index) => (
               <div 
                 key={`row1-${index}`}
-                className="flex-shrink-0 px-8 py-4 bg-gradient-to-r from-foreground to-accent text-background rounded-2xl shadow-lg backdrop-blur-sm hover:scale-105 transition-transform duration-300"
+                className="flex-shrink-0 px-8 py-4 border-chart-1 text-popover bg-slide border-2 rounded-2xl shadow-lg backdrop-blur-sm hover:scale-105 transition-transform duration-300"
               >
-                <span className="text-lg font-medium whitespace-nowrap">
+                <span className="text-lg font-medium whitespace-nowrap ">
                   {text}
                 </span>
               </div>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
+import Image from 'next/image';
 
 const navItems = [
   { name: 'Features', href: '#features' },
@@ -27,10 +28,8 @@ export function Navbar() {
             transition={{ delay: 0.2 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-foreground to-primary rounded-lg flex items-center justify-center">
-              <div className="w-3 h-3 bg-background rounded-sm" />
-            </div>
-            <span className="text-xl text-foreground">AIAgent</span>
+            <Image alt="logo" src="/l3.png" width={50} height={50}/>
+            <span className="text-xl text-foreground">Tribe</span>
           </motion.div>
 
           {/* Navigation Links */}

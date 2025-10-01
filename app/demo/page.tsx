@@ -12,6 +12,7 @@ import { ThemeProvider } from "../../components/dashboard/ThemeProvider";
 import { Navbar } from "../../components/dashboard/Navbar";
 
 
+
 export default function App() {
   const [currentSection, setCurrentSection] = useState('performance');
 
@@ -143,8 +144,8 @@ export default function App() {
   };
 
   return (
-    <ThemeProvider defaultTheme="dark">
-      <div className="min-h-screen bg-background">
+
+      <div className="demo-page min-h-screen bg-background">
         <Navbar 
           currentSection={currentSection} 
           onSectionChange={setCurrentSection} 
@@ -157,6 +158,6 @@ export default function App() {
           </div>
         </div>
       </div>
-    </ThemeProvider>
+
   );
 }

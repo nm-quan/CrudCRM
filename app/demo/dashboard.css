@@ -4,7 +4,7 @@
 
 @layer base {
   /* Define missing text size variables */
-  :root {
+  .demo-page {
     --text-2xl: 1.5rem;
     --text-xl: 1.25rem;
     --text-lg: 1.125rem;
@@ -12,49 +12,49 @@
   }
 
   /* Simplified typography styles - target elements without text- classes */
-  :not([class*="text-"]) h1 {
+  .demo-page :not([class*="text-"]) h1 {
     font-size: var(--text-2xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
-  :not([class*="text-"]) h2 {
+  .demo-page :not([class*="text-"]) h2 {
     font-size: var(--text-xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
-  :not([class*="text-"]) h3 {
+  .demo-page :not([class*="text-"]) h3 {
     font-size: var(--text-lg);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
-  :not([class*="text-"]) h4 {
+  .demo-page :not([class*="text-"]) h4 {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
-  :not([class*="text-"]) p {
+  .demo-page :not([class*="text-"]) p {
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
   }
 
-  :not([class*="text-"]) label {
+  .demo-page :not([class*="text-"]) label {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
-  :not([class*="text-"]) button {
+  .demo-page :not([class*="text-"]) button {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
-  :not([class*="text-"]) input {
+  .demo-page :not([class*="text-"]) input {
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
@@ -62,7 +62,7 @@
 }
 
 /* Root color variables - Light theme */
-:root {
+.demo-page {
   --font-size: 16px;
   --background: radial-gradient(ellipse at center, #f8f8f8 0%, #e8e8e8 50%, #f0f0f0 100%);
   --grid-color: rgba(210, 180, 140, 0.1);
@@ -108,7 +108,7 @@
 }
 
 /* Dark theme colors */
-.dark {
+.demo-page.dark {
   --background: radial-gradient(ellipse at center, #0f0f0f 0%, #000000 50%, #0a0a0a 100%);
   --grid-color: rgba(253, 224, 71, 0.15);
   --glow-primary: rgba(253, 224, 71, 0.6);
@@ -167,13 +167,13 @@
 }
 
 @layer base {
-  * {
+  .demo-page * {
     border-color: var(--border);
     outline-color: var(--ring);
     outline-offset: 2px;
   }
 
-  body {
+  .demo-page {
     color: var(--foreground);
     background: var(--background);
     position: relative;
@@ -181,7 +181,7 @@
   }
 
   /* Animated Grid Background */
-  body::before {
+  .demo-page::before {
     content: '';
     position: fixed;
     top: -50%;
@@ -198,7 +198,7 @@
   }
 
   /* Glowing Accent Lines */
-  body::after {
+  .demo-page::after {
     content: '';
     position: fixed;
     top: 0;
@@ -215,6 +215,6 @@
   }
 }
 
-html {
+.demo-page html {
   font-size: var(--font-size);
 }
