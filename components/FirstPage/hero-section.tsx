@@ -80,7 +80,7 @@ export function HeroSection() {
             >
               <Button 
                 size="lg" 
-                className=" bg-black text-white hover:bg-foreground/90 px-8 py-4 rounded-2xl transition-all duration-300 group"
+                className=" bg-gray-900 text-white hover:bg-foreground/90 px-8 py-4 rounded-2xl transition-all duration-300 group"
               >
                 Start Building Today
                 <ArrowRight color = "white" className=" ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
