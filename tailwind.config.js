@@ -14,6 +14,7 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         slide: "var(--slide)",
+        button: "var(--buttonbg)",
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",

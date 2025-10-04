@@ -1,0 +1,854 @@
+/* Kalano Authentication Component Styles */
+/* Extremely specific naming convention: kalano-auth-* */
+
+.kalano-auth-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.kalano-auth-container.kalano-auth-light-mode {
+  background: #f5f5f5;
+}
+
+/* Animated grid background */
+.kalano-auth-grid-background {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(60, 60, 60, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 60, 60, 0.25) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+  animation: kalano-auth-grid-scroll 30s linear infinite;
+}
+
+.kalano-auth-light-mode .kalano-auth-grid-background {
+  background-image: 
+    linear-gradient(rgba(200, 200, 200, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.4) 1px, transparent 1px);
+  opacity: 0.3;
+}
+
+@keyframes kalano-auth-grid-scroll {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(60px);
+  }
+}
+
+.kalano-auth-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, transparent 0%, #000000 80%);
+}
+
+.kalano-auth-light-mode .kalano-auth-grid-overlay {
+  background: radial-gradient(ellipse at 50% 40%, transparent 0%, #f5f5f5 80%);
+}
+
+/* Floating geometric shapes */
+.kalano-auth-geometric-shape {
+  position: absolute;
+  border: 1px solid rgba(80, 80, 80, 0.3);
+  pointer-events: none;
+}
+
+.kalano-auth-light-mode .kalano-auth-geometric-shape {
+  border-color: rgba(180, 180, 180, 0.4);
+}
+
+.kalano-auth-shape-1 {
+  top: 8%;
+  left: 8%;
+  width: 180px;
+  height: 180px;
+  transform: rotate(45deg);
+  animation: kalano-auth-float-1 25s ease-in-out infinite;
+}
+
+.kalano-auth-shape-2 {
+  bottom: 12%;
+  right: 10%;
+  width: 120px;
+  height: 120px;
+  transform: rotate(30deg);
+  animation: kalano-auth-float-2 18s ease-in-out infinite;
+}
+
+.kalano-auth-shape-3 {
+  top: 55%;
+  left: 12%;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  animation: kalano-auth-float-3 20s ease-in-out infinite;
+}
+
+.kalano-auth-shape-4 {
+  top: 20%;
+  right: 15%;
+  width: 60px;
+  height: 60px;
+  transform: rotate(60deg);
+  animation: kalano-auth-float-1 22s ease-in-out infinite reverse;
+  border-color: rgba(100, 100, 100, 0.25);
+}
+
+.kalano-auth-light-mode .kalano-auth-shape-4 {
+  border-color: rgba(160, 160, 160, 0.35);
+}
+
+@keyframes kalano-auth-float-1 {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0px);
+    opacity: 0.25;
+  }
+  50% {
+    transform: rotate(45deg) translateY(-40px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes kalano-auth-float-2 {
+  0%, 100% {
+    transform: rotate(30deg) translateY(0px);
+    opacity: 0.2;
+  }
+  50% {
+    transform: rotate(30deg) translateY(30px);
+    opacity: 0.45;
+  }
+}
+
+@keyframes kalano-auth-float-3 {
+  0%, 100% {
+    transform: translateX(0px) scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateX(-30px) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* Scanline effect */
+.kalano-auth-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.kalano-auth-light-mode .kalano-auth-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  opacity: 0.5;
+}
+
+/* Ambient light particles */
+.kalano-auth-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.kalano-auth-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(200, 200, 200, 0.4);
+  border-radius: 50%;
+  animation: kalano-auth-particle-float 8s ease-in-out infinite;
+}
+
+.kalano-auth-light-mode .kalano-auth-particle {
+  background: rgba(100, 100, 100, 0.3);
+}
+
+.kalano-auth-particle:nth-child(1) {
+  top: 20%;
+  left: 25%;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+
+.kalano-auth-particle:nth-child(2) {
+  top: 60%;
+  left: 70%;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.kalano-auth-particle:nth-child(3) {
+  top: 40%;
+  left: 15%;
+  animation-delay: 4s;
+  animation-duration: 9s;
+}
+
+.kalano-auth-particle:nth-child(4) {
+  top: 75%;
+  left: 80%;
+  animation-delay: 1s;
+  animation-duration: 11s;
+}
+
+.kalano-auth-particle:nth-child(5) {
+  top: 30%;
+  left: 85%;
+  animation-delay: 3s;
+  animation-duration: 13s;
+}
+
+@keyframes kalano-auth-particle-float {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+}
+
+/* Theme toggle button */
+.kalano-auth-theme-toggle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.8);
+  border: 2px solid rgba(80, 80, 80, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.kalano-auth-light-mode .kalano-auth-theme-toggle {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(200, 200, 200, 0.6);
+}
+
+.kalano-auth-theme-toggle:hover {
+  transform: scale(1.1);
+  border-color: rgba(140, 140, 140, 0.7);
+}
+
+.kalano-auth-theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.kalano-auth-light-mode .kalano-auth-theme-toggle svg {
+  color: #2a2a2a;
+}
+
+/* 3D Perspective KLANO text */
+.kalano-auth-brand-container {
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  transform: translateX(-50%);
+  perspective: 1000px;
+  z-index: 5;
+}
+
+.kalano-auth-brand-text {
+  font-size: 90px;
+  font-weight: 900;
+  letter-spacing: 20px;
+  text-transform: uppercase;
+  color: #707070;
+  transform: perspective(600px) rotateX(25deg);
+  text-shadow: 
+    0 1px 0 #1a1a1a,
+    0 2px 0 #1a1a1a,
+    0 3px 0 #1a1a1a,
+    0 4px 0 #1a1a1a,
+    0 5px 0 #1a1a1a,
+    0 6px 0 #151515,
+    0 7px 0 #151515,
+    0 8px 0 #151515,
+    0 9px 0 #101010,
+    0 10px 0 #101010,
+    0 12px 0 #0d0d0d,
+    0 15px 35px rgba(0, 0, 0, 0.9);
+  position: relative;
+  animation: kalano-auth-brand-pulse 6s ease-in-out infinite;
+  filter: brightness(1.1);
+}
+
+.kalano-auth-light-mode .kalano-auth-brand-text {
+  color: #404040;
+  text-shadow: 
+    0 1px 0 #e0e0e0,
+    0 2px 0 #d5d5d5,
+    0 3px 0 #cacaca,
+    0 4px 0 #c0c0c0,
+    0 5px 0 #b5b5b5,
+    0 6px 0 #aaa,
+    0 7px 0 #a0a0a0,
+    0 8px 0 #959595,
+    0 9px 0 #8a8a8a,
+    0 10px 0 #808080,
+    0 12px 0 #757575,
+    0 15px 40px rgba(0, 0, 0, 0.15);
+  filter: brightness(1);
+}
+
+@keyframes kalano-auth-brand-pulse {
+  0%, 100% {
+    filter: brightness(1.1);
+  }
+  50% {
+    filter: brightness(1.25);
+  }
+}
+
+.kalano-auth-light-mode .kalano-auth-brand-text {
+  animation: kalano-auth-brand-pulse-light 6s ease-in-out infinite;
+}
+
+@keyframes kalano-auth-brand-pulse-light {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+}
+
+/* Subtle glow */
+.kalano-auth-background-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(40, 40, 40, 0.3) 0%, transparent 65%);
+  filter: blur(120px);
+}
+
+.kalano-auth-light-mode .kalano-auth-background-glow {
+  background: radial-gradient(circle, rgba(200, 200, 200, 0.4) 0%, transparent 65%);
+}
+
+.kalano-auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(12, 12, 12, 0.92);
+  backdrop-filter: blur(40px);
+  border: 3px solid rgba(90, 90, 90, 0.5);
+  border-radius: 32px;
+  padding: 56px 52px 52px;
+  box-shadow: 
+    0 0 120px rgba(0, 0, 0, 0.9),
+    0 50px 100px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.03),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.kalano-auth-light-mode .kalano-auth-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(200, 200, 200, 0.6);
+  box-shadow: 
+    0 0 80px rgba(0, 0, 0, 0.1),
+    0 30px 60px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Card decorative elements */
+.kalano-auth-card-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 32px;
+  background: linear-gradient(
+    135deg,
+    rgba(160, 160, 160, 0.15) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(140, 140, 140, 0.1) 100%
+  );
+  z-index: -1;
+  opacity: 0.6;
+  animation: kalano-auth-card-glow-pulse 4s ease-in-out infinite;
+}
+
+.kalano-auth-light-mode .kalano-auth-card-glow {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 220, 220, 0.6) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(200, 200, 200, 0.4) 100%
+  );
+  opacity: 0.8;
+}
+
+@keyframes kalano-auth-card-glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.kalano-auth-card-accent-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(140, 140, 140, 0.5);
+  border-radius: 8px;
+}
+
+.kalano-auth-light-mode .kalano-auth-card-accent-corner {
+  border-color: rgba(160, 160, 160, 0.6);
+}
+
+.kalano-auth-corner-tl {
+  top: 16px;
+  left: 16px;
+  border-right: none;
+  border-bottom: none;
+  box-shadow: 0 0 16px rgba(140, 140, 140, 0.3);
+}
+
+.kalano-auth-light-mode .kalano-auth-corner-tl {
+  box-shadow: 0 0 16px rgba(160, 160, 160, 0.2);
+}
+
+.kalano-auth-corner-br {
+  bottom: 16px;
+  right: 16px;
+  border-left: none;
+  border-top: none;
+  box-shadow: 0 0 16px rgba(140, 140, 140, 0.3);
+}
+
+.kalano-auth-light-mode .kalano-auth-corner-br {
+  box-shadow: 0 0 16px rgba(160, 160, 160, 0.2);
+}
+
+.kalano-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.kalano-auth-input-group {
+  position: relative;
+}
+
+.kalano-auth-label {
+  display: block;
+  font-size: 11px;
+  color: #959595;
+  margin-bottom: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.kalano-auth-light-mode .kalano-auth-label {
+  color: #606060;
+}
+
+.kalano-auth-input {
+  width: 100%;
+  padding: 18px 22px;
+  background: rgba(18, 18, 18, 0.9);
+  border: 2px solid rgba(90, 90, 90, 0.4);
+  border-radius: 16px;
+  color: #d8d8d8;
+  font-size: 15px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+}
+
+.kalano-auth-light-mode .kalano-auth-input {
+  background: rgba(245, 245, 245, 0.9);
+  border-color: rgba(200, 200, 200, 0.5);
+  color: #2a2a2a;
+}
+
+.kalano-auth-input:focus {
+  border-color: rgba(170, 170, 170, 0.6);
+  background: rgba(22, 22, 22, 1);
+  box-shadow: 
+    0 0 0 3px rgba(100, 100, 100, 0.12),
+    inset 0 0 25px rgba(255, 255, 255, 0.015);
+  transform: translateY(-1px);
+}
+
+.kalano-auth-light-mode .kalano-auth-input:focus {
+  border-color: rgba(140, 140, 140, 0.7);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 
+    0 0 0 3px rgba(200, 200, 200, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.02);
+}
+
+.kalano-auth-input::placeholder {
+  color: #454545;
+}
+
+.kalano-auth-light-mode .kalano-auth-input::placeholder {
+  color: #a0a0a0;
+}
+
+.kalano-auth-button-google {
+  width: 100%;
+  padding: 18px 24px;
+  background: rgba(28, 28, 28, 0.8);
+  border: 2px solid rgba(85, 85, 85, 0.5);
+  border-radius: 16px;
+  color: #e0e0e0;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kalano-auth-light-mode .kalano-auth-button-google {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(200, 200, 200, 0.6);
+  color: #2a2a2a;
+}
+
+.kalano-auth-button-google::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 16px;
+}
+
+.kalano-auth-button-google:hover {
+  background: rgba(35, 35, 35, 0.95);
+  border-color: rgba(130, 130, 130, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 28px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.kalano-auth-light-mode .kalano-auth-button-google:hover {
+  background: rgba(250, 250, 250, 1);
+  border-color: rgba(180, 180, 180, 0.7);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.kalano-auth-button-google:hover::before {
+  opacity: 1;
+}
+
+.kalano-auth-google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.kalano-auth-button-primary {
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #2d2d2d 0%, #1e1e1e 100%);
+  border: 2px solid rgba(110, 110, 110, 0.5);
+  border-radius: 16px;
+  color: #ececec;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.kalano-auth-light-mode .kalano-auth-button-primary {
+  background: linear-gradient(135deg, #404040 0%, #2a2a2a 100%);
+  border-color: rgba(140, 140, 140, 0.6);
+  color: #ffffff;
+}
+
+.kalano-auth-button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(160, 160, 160, 0.15), transparent);
+  transition: left 0.6s ease;
+}
+
+.kalano-auth-button-primary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(150, 150, 150, 0.6);
+  background: linear-gradient(135deg, #323232 0%, #222222 100%);
+  box-shadow: 
+    0 0 35px rgba(120, 120, 120, 0.2),
+    0 10px 25px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.kalano-auth-light-mode .kalano-auth-button-primary:hover {
+  background: linear-gradient(135deg, #4a4a4a 0%, #353535 100%);
+  border-color: rgba(120, 120, 120, 0.7);
+  box-shadow: 
+    0 0 30px rgba(100, 100, 100, 0.25),
+    0 10px 25px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.kalano-auth-button-primary:hover::before {
+  left: 100%;
+}
+
+.kalano-auth-button-primary:active {
+  transform: translateY(0);
+}
+
+.kalano-auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 32px 0;
+}
+
+.kalano-auth-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(90, 90, 90, 0.45), transparent);
+  position: relative;
+}
+
+.kalano-auth-light-mode .kalano-auth-divider-line {
+  background: linear-gradient(90deg, transparent, rgba(180, 180, 180, 0.5), transparent);
+}
+
+.kalano-auth-divider-line::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: rgba(140, 140, 140, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(140, 140, 140, 0.4);
+}
+
+.kalano-auth-light-mode .kalano-auth-divider-line::after {
+  background: rgba(160, 160, 160, 0.7);
+  box-shadow: 0 0 8px rgba(160, 160, 160, 0.3);
+}
+
+.kalano-auth-divider-text {
+  font-size: 10px;
+  color: #707070;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.kalano-auth-light-mode .kalano-auth-divider-text {
+  color: #909090;
+}
+
+.kalano-auth-footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: #6a6a6a;
+}
+
+.kalano-auth-light-mode .kalano-auth-footer {
+  color: #707070;
+}
+
+.kalano-auth-footer-link {
+  color: #c0c0c0;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.kalano-auth-light-mode .kalano-auth-footer-link {
+  color: #404040;
+}
+
+.kalano-auth-footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: rgba(160, 160, 160, 0.8);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 6px rgba(160, 160, 160, 0.3);
+}
+
+.kalano-auth-footer-link:hover {
+  color: #ececec;
+}
+
+.kalano-auth-light-mode .kalano-auth-footer-link:hover {
+  color: #1a1a1a;
+}
+
+.kalano-auth-footer-link:hover::after {
+  width: 100%;
+}
+
+.kalano-auth-forgot-password {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.kalano-auth-forgot-password-link {
+  font-size: 11px;
+  color: #7a7a7a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.kalano-auth-light-mode .kalano-auth-forgot-password-link {
+  color: #808080;
+}
+
+.kalano-auth-forgot-password-link:hover {
+  color: #c0c0c0;
+}
+
+.kalano-auth-light-mode .kalano-auth-forgot-password-link:hover {
+  color: #404040;
+}
+
+/* Loading state */
+.kalano-auth-button-primary:disabled,
+.kalano-auth-button-google:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Vertical accent indicator */
+.kalano-auth-vertical-accent {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent, rgba(140, 140, 140, 0.7), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(140, 140, 140, 0.3);
+}
+
+.kalano-auth-light-mode .kalano-auth-vertical-accent {
+  background: linear-gradient(180deg, transparent, rgba(160, 160, 160, 0.8), transparent);
+  box-shadow: 0 0 12px rgba(160, 160, 160, 0.25);
+}
+
+/* Data stream effect on card */
+.kalano-auth-data-stream {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(140, 140, 140, 0.5) 50%,
+    transparent
+  );
+  background-size: 100% 40px;
+  border-radius: 2px;
+  animation: kalano-auth-stream 2.5s linear infinite;
+  box-shadow: 0 0 12px rgba(140, 140, 140, 0.25);
+}
+
+.kalano-auth-light-mode .kalano-auth-data-stream {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(160, 160, 160, 0.6) 50%,
+    transparent
+  );
+  background-size: 100% 40px;
+  box-shadow: 0 0 12px rgba(160, 160, 160, 0.2);
+}
+
+@keyframes kalano-auth-stream {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+.kalano-auth-card-accent-line {
+  display: none;
+}
+
+.kalano-auth-card-accent-line-top,
+.kalano-auth-card-accent-line-bottom {
+  display: none;
+}
