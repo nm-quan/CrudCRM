@@ -277,15 +277,34 @@
 .kalano-auth-light-mode .kalano-auth-theme-toggle svg {
   color: #2a2a2a;
 }
+/* Glow behind KLANO text */
+.kalano-auth-brand-text::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(140, 140, 140, 0.35) 0%, rgba(100, 100, 100, 0.15) 40%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  animation: kalano-auth-brand-glow-pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
 
 /* 3D Perspective KLANO text */
 .kalano-auth-brand-container {
   position: absolute;
-  top: 11%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: -140px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   perspective: 1000px;
   z-index: 5;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .kalano-auth-brand-text {
@@ -555,6 +574,7 @@
   gap: 14px;
   position: relative;
   overflow: hidden;
+  z-index: 100;
 }
 
 .kalano-auth-light-mode .kalano-auth-button-google {
@@ -592,6 +612,7 @@
 
 .kalano-auth-button-google:hover::before {
   opacity: 1;
+
 }
 
 .kalano-auth-google-icon {

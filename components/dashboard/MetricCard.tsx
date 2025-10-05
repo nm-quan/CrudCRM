@@ -9,9 +9,10 @@ interface MetricCardProps {
   suffix?: string;
   change?: string;
   changeType?: 'increase' | 'decrease';
+  icon?: React.ReactNode;
 }
 
-export function MetricCard({ title, value, type, suffix, change, changeType }: MetricCardProps) {
+export function MetricCard({ title, value, type, suffix, change, changeType, icon }: MetricCardProps) {
   const { theme } = useTheme();
   
   const formatValue = () => {
@@ -43,7 +44,10 @@ export function MetricCard({ title, value, type, suffix, change, changeType }: M
       <div className="absolute inset-0 bg-gradient-to-br from-card-glow/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <CardHeader className="pb-2 relative z-10">
-        <CardTitle className="text-muted-foreground text-sm tracking-wide uppercase">{title}</CardTitle>
+        <CardTitle className="text-muted-foreground text-sm tracking-wide uppercase flex items-center gap-2">
+          {icon && <span className="text-primary">{icon}</span>}
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="relative z-10">
         <div className="flex items-end justify-between">

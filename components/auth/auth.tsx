@@ -1,16 +1,37 @@
 "use client";
 import { useState } from 'react';
 import '../../styles/kalano-auth.css';
+import { createClient } from '@/utils/supabase/client'; // Ensure this path is correct
+
 
 export default function KalanoAuth() {
+  const supabase = createClient();
+  const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isLightMode, setIsLightMode] = useState(false);
 
+
   const handleSubmit = async (e: React.FormEvent) => {
+
     e.preventDefault();
     setIsLoading(true);
+    if (!isSignUp) {
+      const { error } = await supabase.auth.signUp({ email, password });   
+      setIsSignUp(true);
+        if (error) {
+            console.error('Error during sign up:', error.message);
+            setIsLoading(false);
+            return;
+        }
+    } else {
+
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+            console.error('Error during sign in:', error.message);
+        }
+    }
     
     // Simulate authentication
     setTimeout(() => {
@@ -19,16 +40,25 @@ export default function KalanoAuth() {
     }, 1000);
   };
 
-  const handleGoogleSignIn = () => {
-    setIsLoading(true);
-    
-    // Simulate Google OAuth
-    setTimeout(() => {
-      console.log('Sign in with Google');
-      setIsLoading(false);
-    }, 1000);
-  };
+const handleGoogleSignIn = async () => {
+  setIsLoading(true);
+  
+  try {
+    const {error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: `${window.location.origin}/demo` }
+    });
 
+    if (error) {
+      console.error('Error signing in with Google:', error.message);
+      // Optionally show error to user
+    }
+  } catch (error) {
+    console.error('Unexpected error:', error);
+  } finally {
+    setIsLoading(false);
+  }
+};
   const toggleTheme = () => {
     setIsLightMode(!isLightMode);
   };
@@ -36,6 +66,8 @@ export default function KalanoAuth() {
   return (
     <div className='flex items-center justify-center min-h-screen ' >
       {/* Auth card */}
+        {/* Background glow */}
+ 
       <div className="kalano-auth-card">
         {/* Decorative elements */}
         <div className="kalano-auth-card-glow" />
@@ -43,6 +75,21 @@ export default function KalanoAuth() {
         <div className="kalano-auth-card-accent-corner kalano-auth-corner-br" />
         <div className="kalano-auth-vertical-accent" />
         <div className="kalano-auth-data-stream" />
+          {/* Scanline effect */}
+      <div className="kalano-auth-scanline" />
+       {/* Floating particles */}
+      <div className="kalano-auth-particles">
+        <div className="kalano-auth-particle" />
+        <div className="kalano-auth-particle" />
+        <div className="kalano-auth-particle" />
+        <div className="kalano-auth-particle" />
+        <div className="kalano-auth-particle" />
+      </div>
+      
+      {/* 3D Perspective KLANO Brand - MOVED ABOVE TOGGLE FOR PROPER LAYERING */}
+      <div className="kalano-auth-brand-container">
+        <div className="kalano-auth-brand-text">KLANO</div>
+      </div>
 
         {/* Google sign in - moved to top */}
         <button
@@ -82,6 +129,8 @@ export default function KalanoAuth() {
           <span className="kalano-auth-divider-text">OR</span>
           <div className="kalano-auth-divider-line" />
         </div>
+         {/* Background glow */}
+      <div className="kalano-auth-background-glow" />
 
         {/* Sign in form */}
         <form onSubmit={handleSubmit} className="kalano-auth-form">

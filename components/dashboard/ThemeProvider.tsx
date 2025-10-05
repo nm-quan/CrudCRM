@@ -1,7 +1,7 @@
-"use client";
+'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: 'dark',
   setTheme: () => null,
 };
 
@@ -23,73 +23,34 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'dark',
   storageKey = 'dashboard-theme',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
-  const [mounted, setMounted] = useState(false);
-
-  // Handle hydration safely
-  useEffect(() => {
-    setMounted(true);
-    const storedTheme = localStorage.getItem(storageKey) as Theme;
-    if (storedTheme && ['dark', 'light', 'system'].includes(storedTheme)) {
-      setTheme(storedTheme);
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Check if we're in the browser before accessing localStorage
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
     }
-  }, [storageKey]);
+    return defaultTheme;
+  });
 
   useEffect(() => {
-    if (!mounted) return;
-
     const root = window.document.documentElement;
+
     root.classList.remove('light', 'dark');
-
-    let effectiveTheme: 'light' | 'dark';
-
-    if (theme === 'system') {
-      effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-    } else {
-      effectiveTheme = theme;
-    }
-
-    root.classList.add(effectiveTheme);
-
-    // Listen for system theme changes when using system theme
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      if (theme === 'system') {
-        root.classList.remove('light', 'dark');
-        root.classList.add(mediaQuery.matches ? 'dark' : 'light');
-      }
-    };
-
-    if (theme === 'system') {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
-  }, [theme, mounted]);
+    root.classList.add(theme);
+  }, [theme]);
 
   const value = {
     theme,
-    setTheme: (newTheme: Theme) => {
-      if (mounted) {
-        localStorage.setItem(storageKey, newTheme);
+    setTheme: (theme: Theme) => {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(storageKey, theme);
       }
-      setTheme(newTheme);
+      setTheme(theme);
     },
   };
-
-  // Prevent hydration mismatch by not rendering until mounted
-  if (!mounted) {
-    return (
-      <ThemeProviderContext.Provider value={initialState}>
-        {children}
-      </ThemeProviderContext.Provider>
-    );
-  }
 
   return (
     <ThemeProviderContext.Provider {...props} value={value}>
