@@ -389,7 +389,7 @@
 }
 
 .kalano-auth-card {
-  position: absolute;
+  position:absolute ;
   width: 100%;
   max-width: 480px;
   background: rgba(12, 12, 12, 0.92);
