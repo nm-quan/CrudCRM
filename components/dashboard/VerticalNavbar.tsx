@@ -1,3 +1,6 @@
+"use client";
+
+
 import { useState } from 'react';
 import { motion } from "framer-motion";
 import { BarChart3, Search, MessageCircle, Settings, Sun, Moon } from 'lucide-react';

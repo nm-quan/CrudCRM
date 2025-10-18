@@ -7,6 +7,7 @@ import { MetricCard } from './MetricCard';
 import { UnifiedActionBar } from './UnifiedActionBar';
 import { CRMClientsTable } from './CRMClientsTable';
 import { Activity, BarChart3, Clock, DollarSign, Target } from "lucide-react";
+import SubscriptionsTable from './table';
 
 export function FuturisticPerformancePage() {
   const { theme } = useTheme();
@@ -185,6 +186,7 @@ export function FuturisticPerformancePage() {
 
 
       </div>
+      
 
     </div>
   );
