@@ -297,14 +297,14 @@
 .kalano-auth-brand-container {
   position: absolute;
   top: -140px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
   perspective: 1000px;
   z-index: 5;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: max-content;
+  max-width: 100%;
 }
 
 .kalano-auth-brand-text {
