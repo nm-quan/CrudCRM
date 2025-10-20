@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from './ThemeProvider';
 import { MultiColorThreatChart } from './MultiColorThreatChart';
 import  CustomerReviewsTable from './CustomerReviewsTable';
-import SubscriptionsTable from './table';
+import GmailTable from './GmailTable';
 
 import { Target } from "lucide-react";
 
@@ -91,6 +91,7 @@ export function FuturisticIdentificationPage() {
             </div>
             <div className="mb-6">
               <MultiColorThreatChart />
+              <GmailTable  />
       
              
             </div>

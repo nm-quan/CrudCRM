@@ -46,7 +46,10 @@ const handleGoogleSignIn = async () => {
   try {
     const {error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/demo` }
+      options: { redirectTo: `${window.location.origin}/demo` ,
+      scopes:
+            'https://www.googleapis.com/auth/gmail.readonly openid email profile',
+             },    
     });
 
     if (error) {
