@@ -249,7 +249,7 @@ export function TestimonySection() {
                         textShadow: cardColor.text === '#ffffff' ? '0 1px 2px rgba(0,0,0,0.1)' : 'none'
                       }}
                     >
-                      "{testimony.content}"
+                      {`"${testimony.content}"`}
                     </p>
 
                     <div className="flex items-center gap-6">

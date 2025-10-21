@@ -15,7 +15,10 @@ interface Subscription {
   nextRenewal: string;
   links: string[];
 }
-
+interface GmailListMessage {
+  id: string;
+  threadId?: string;
+}
 /* ------------------------------------------------------------
    Regex parser for subscription confirmations (e.g. Prime Video)
 ------------------------------------------------------------ */
@@ -96,14 +99,14 @@ export default function SubscriptionTracker() {
         }
 
         const detailed = await Promise.all(
-          list.messages.map(async (m: any) => {
+          list.messages.map(async (m: GmailListMessage) => {
             const msg = await fetch(
               `https://gmail.googleapis.com/gmail/v1/users/me/messages/${m.id}`,
               { headers: { Authorization: `Bearer ${accessToken}` } }
             ).then((r) => r.json());
 
             const headers = msg.payload.headers;
-            const get = (n: string) => headers.find((h: any) => h.name === n)?.value || '';
+            const get = (n: string) => headers.find((h: {name:string, value:string}) => h.name === n)?.value || '';
             return {
               id: m.id,
               from: get('From'),
