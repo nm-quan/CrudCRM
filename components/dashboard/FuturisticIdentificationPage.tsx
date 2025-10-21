@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from './ThemeProvider';
 import { MultiColorThreatChart } from './MultiColorThreatChart';
-import  CustomerReviewsTable from './CustomerReviewsTable';
-import GmailTable from './GmailTable';
+import  JobTrackingTable  from './GmailTable';
+import  {ContactsTable} from './ContactsTable';
 
-import { Target } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 
 export function FuturisticIdentificationPage() {
   const { theme } = useTheme();
@@ -38,65 +38,63 @@ export function FuturisticIdentificationPage() {
         )}
       </AnimatePresence>
 
-      {/* Customer Reviews Table - Main Focus */}
+      {/* Job List */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="w-full mb-8"
       >
-        <CustomerReviewsTable />
+        <JobTrackingTable />
       </motion.div>
 
-
-
-      {/* Full Width Threat Chart */}
+      {/* Full Width Job Analytics Chart */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
         className="w-full"
       >
-        <div className="bg-card/20 backdrop-blur-xl border border-card-border rounded-2xl p-6 relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-500/5" />
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-          </div>
-          
+        <div className="bg-card/10 backdrop-blur-xl border border-border/20 rounded-2xl p-6 relative overflow-hidden">
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
-              <Target className="w-5 h-5 text-primary" />
-              <h2 className="text-foreground font-mono">THREAT ANALYTICS</h2>
+              <TrendingUp className="w-5 h-5 text-primary" />
+              <h2 className="text-foreground font-mono">JOB APPLICATION ANALYTICS</h2>
               <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
               
               {/* Legend */}
               <div className="flex items-center gap-4 text-xs font-mono">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded-sm" />
-                  <span className="text-muted-foreground">CRITICAL</span>
+                  <span className="text-muted-foreground">REJECTED</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-orange-500 rounded-sm" />
-                  <span className="text-muted-foreground">HIGH</span>
+                  <div className="w-3 h-3 bg-blue-500 rounded-sm" />
+                  <span className="text-muted-foreground">APPLIED</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-yellow-500 rounded-sm" />
-                  <span className="text-muted-foreground">MEDIUM</span>
+                  <span className="text-muted-foreground">INTERVIEW</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-500 rounded-sm" />
-                  <span className="text-muted-foreground">LOW</span>
+                  <span className="text-muted-foreground">OFFER</span>
                 </div>
               </div>
             </div>
             <div className="mb-6">
               <MultiColorThreatChart />
-              <GmailTable  />
-      
-             
             </div>
           </div>
         </div>
+      </motion.div>
+
+      {/* Company Contacts Table */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+      >
+        <ContactsTable />
       </motion.div>
 
     </div>

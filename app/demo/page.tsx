@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { FuturisticPerformancePage } from "../../components/dashboard/FuturisticPerformancePage";
 import { FuturisticIdentificationPage } from "../../components/dashboard/FuturisticIdentificationPage";
-import { FollowUpPage } from "../../components/dashboard/FollowUpPage";
+import  SubscriptionTracker  from '../../components/dashboard/FollowUpPage';
 import { SettingsPage } from "../../components/dashboard/SettingsPage";
 import { ThemeProvider } from "../../components/dashboard/ThemeProvider";
 import { VerticalNavbar } from "../../components/dashboard/VerticalNavbar";
@@ -152,7 +152,7 @@ export default function App() {
       case 'identifications':
         return <FuturisticIdentificationPage />;
       case 'followup':
-        return <FollowUpPage />;
+        return <SubscriptionTracker />;
       case 'data':
         return renderDataSection();
       case 'settings':
