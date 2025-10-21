@@ -123,10 +123,11 @@ export default function SubscriptionTracker() {
           .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
 
         setSubscriptions(parsed);
-      } catch (err: any) {
+      } catch (err: unknown) {
+        if (err instanceof Error){
         console.error(err);
         setError(err.message);
-      } finally {
+      }} finally {
         setLoading(false);
       }
     };
