@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from './ThemeProvider';
 import { Search, Plus, Users, Check, X, Edit3, ChevronUp, ChevronDown } from "lucide-react";
 
+
 // Mock CRM data
 const initialCrmClients = [
   {
@@ -86,11 +87,21 @@ const initialCrmClients = [
     next_action: "Implementation support check-in"
   }
 ];
+interface Client {
+  customer_id: number;
+  name: string;
+  email: string;
+  phone_number: string;
+  company: string;
+  status: string;
+  last_contact_date: string;
+  next_action: string;
+}
 
 export function CRMClientsTable() {
   const { theme } = useTheme();
   const [searchTerm, setSearchTerm] = useState('');
-  const [clients, setClients] = useState(initialCrmClients);
+  const [clients, setClients] = useState<Client[]>(initialCrmClients);;
   const [editingCell, setEditingCell] = useState<{clientId: number, field: string} | null>(null);
   const [editValue, setEditValue] = useState('');
   const [sortField, setSortField] = useState<string>('name');
@@ -192,43 +203,54 @@ export function CRMClientsTable() {
     setEditValue('');
   };
 
-  const renderEditableCell = (client: any, field: string, value: string, className: string = '') => {
-    const isEditing = editingCell?.clientId === client.customer_id && editingCell?.field === field;
-    
-    if (isEditing) {
-      return (
-        <div className="flex items-center gap-1">
-          <input
-            type="text"
-            value={editValue}
-            onChange={(e) => setEditValue(e.target.value)}
-            className="w-full bg-card/50 border border-primary/50 rounded px-2 py-1 text-xs font-mono text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') saveEdit();
-              if (e.key === 'Escape') cancelEdit();
-            }}
-            autoFocus
-          />
-          <button onClick={saveEdit} className="text-green-400 hover:text-green-300 p-1">
-            <Check className="w-3 h-3" />
-          </button>
-          <button onClick={cancelEdit} className="text-red-400 hover:text-red-300 p-1">
-            <X className="w-3 h-3" />
-          </button>
-        </div>
-      );
-    }
 
+
+
+
+const renderEditableCell = (
+  client: Client,
+  field: keyof Client,
+  value: string,
+  className: string = ''
+) => {
+  const isEditing =
+    editingCell?.clientId === client.customer_id && editingCell?.field === field;
+
+  if (isEditing) {
     return (
-      <div 
-        className={`group cursor-pointer hover:bg-card/20 rounded px-2 py-1 transition-colors flex items-center gap-2 ${className}`}
-        onClick={() => startEdit(client.customer_id, field, value)}
-      >
-        <span className="font-mono text-foreground">{value}</span>
-        <Edit3 className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="flex items-center gap-1">
+        <input
+          type="text"
+          value={editValue}
+          onChange={(e) => setEditValue(e.target.value)}
+          className="w-full bg-card/50 border border-primary/50 rounded px-2 py-1 text-xs font-mono text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') saveEdit();
+            if (e.key === 'Escape') cancelEdit();
+          }}
+          autoFocus
+        />
+        <button onClick={saveEdit} className="text-green-400 hover:text-green-300 p-1">
+          <Check className="w-3 h-3" />
+        </button>
+        <button onClick={cancelEdit} className="text-red-400 hover:text-red-300 p-1">
+          <X className="w-3 h-3" />
+        </button>
       </div>
     );
-  };
+  }
+
+  return (
+    <div
+      className={`group cursor-pointer hover:bg-card/20 rounded px-2 py-1 transition-colors flex items-center gap-2 ${className}`}
+      onClick={() => startEdit(client.customer_id, field, value)}
+    >
+      <span className="font-mono text-foreground">{value}</span>
+      <Edit3 className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+    </div>
+  );
+};
+
 
   return (
     <div className="bg-card/20 backdrop-blur-xl border border-card-border rounded-2xl relative overflow-hidden">

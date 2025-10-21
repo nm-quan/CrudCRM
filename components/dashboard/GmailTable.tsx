@@ -16,6 +16,11 @@ interface Job {
   dateApplied: string;
   lastUpdate: string;
 }
+interface GmailListMessage {
+  id: string;
+  threadId?: string;
+}
+
 
 /* ------------------------------------------------------------
    SEEK-only parser with cleanup for "Hi Chris" etc.
@@ -83,14 +88,14 @@ export default function JobTrackingTable() {
         }
 
         const detailed = await Promise.all(
-          list.messages.map(async (m: any) => {
+          list.messages.map(async (m: GmailListMessage) => {
             const msg = await fetch(
               `https://gmail.googleapis.com/gmail/v1/users/me/messages/${m.id}`,
               { headers: { Authorization: `Bearer ${accessToken}` } }
             ).then((r) => r.json());
 
             const headers = msg.payload.headers;
-            const get = (n: string) => headers.find((h: any) => h.name === n)?.value || '';
+            const get = (n: string) => headers.find((h: {name: string; value:string}) => h.name === n)?.value || '';
             return {
               id: m.id,
               from: get('From'),
@@ -107,9 +112,11 @@ export default function JobTrackingTable() {
           .sort((a, b) => new Date(b.dateApplied).getTime() - new Date(a.dateApplied).getTime());
 
         setJobs(parsedJobs);
-      } catch (err: any) {
+        
+      } catch (err: unknown) {
+        if (err instanceof Error){
         console.error(err);
-        setError(err.message);
+        setError(err.message);}
       } finally {
         setLoading(false);
       }

@@ -413,7 +413,7 @@ export function TestimonySection() {
                           fontWeight: 400
                         }}
                       >
-                        "{testimony.content}"
+                          {`"${testimony.content}"`}
                       </p>
 
                       {/* Improvement badge */}

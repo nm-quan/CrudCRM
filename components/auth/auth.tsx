@@ -62,9 +62,7 @@ const handleGoogleSignIn = async () => {
     setIsLoading(false);
   }
 };
-  const toggleTheme = () => {
-    setIsLightMode(!isLightMode);
-  };
+
 
   return (
     <div className='flex items-center justify-center min-h-screen ' >
@@ -88,8 +86,7 @@ const handleGoogleSignIn = async () => {
         <div className="kalano-auth-particle" />
         <div className="kalano-auth-particle" />
       </div>
-      
-      {/* 3D Perspective KLANO Brand - MOVED ABOVE TOGGLE FOR PROPER LAYERING */}
+
       <div className="kalano-auth-brand-container">
         <div className="kalano-auth-brand-text">KLANO</div>
       </div>
@@ -185,7 +182,7 @@ const handleGoogleSignIn = async () => {
 
         {/* Footer */}
         <div className="kalano-auth-footer">
-          Don't have an account?{' '}
+          {"Don't have an account?"}{' '}
           <a href="#" className="kalano-auth-footer-link">
             Register
           </a>
