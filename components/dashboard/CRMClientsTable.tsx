@@ -658,33 +658,6 @@ export function CRMClientsTable() {
             </AnimatePresence>
           </div>
         </div>
-
-        {/* Footer */}
-        <div className="p-4 border-t border-card-border/50 bg-card/10">
-          <div className="flex items-center justify-between text-xs font-mono">
-            <div className="text-muted-foreground">
-              SHOWING {filteredAndSortedCustomers.length} OF {customers.length} CUSTOMERS
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span className="text-muted-foreground">ACTIVE {stats.active}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                <span className="text-muted-foreground">PROSPECTS {stats.prospects}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-muted-foreground">LEADS {stats.leads}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                <span className="text-muted-foreground">CHURNED {stats.churned}</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

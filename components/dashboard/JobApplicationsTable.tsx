@@ -650,33 +650,6 @@ export function JobApplicationsTable() {
                         </AnimatePresence>
                     </div>
                 </div>
-
-                {/* Footer */}
-                <div className="p-4 border-t border-card-border/50 bg-card/10">
-                    <div className="flex items-center justify-between text-xs font-mono">
-                        <div className="text-muted-foreground">
-                            SHOWING {filteredAndSortedJobs.length} OF {jobs.length} APPLICATIONS
-                        </div>
-                        <div className="flex items-center gap-6">
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                <span className="text-muted-foreground">APPLIED {stats.applied}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                                <span className="text-muted-foreground">INTERVIEW {stats.interview}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span className="text-muted-foreground">OFFER {stats.offer}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                                <span className="text-muted-foreground">REJECTED {stats.rejected}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     );

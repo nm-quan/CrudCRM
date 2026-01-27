@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { motion } from "framer-motion";
-import { BarChart3, Search, MessageCircle, Settings, Sun, Moon } from 'lucide-react';
+import { BarChart3, Search, Settings, Sun, Moon } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { Button } from '../ui/button';
 
@@ -19,7 +19,6 @@ export function VerticalNavbar({ currentSection, onSectionChange }: VerticalNavb
   const sections = [
     { id: 'performance', label: 'Performance', icon: BarChart3 },
     { id: 'identifications', label: 'Identifications', icon: Search },
-    { id: 'followup', label: 'Follow-Up', icon: MessageCircle },
   ];
 
   const handleSectionChange = (sectionId: string) => {
@@ -31,7 +30,7 @@ export function VerticalNavbar({ currentSection, onSectionChange }: VerticalNavb
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-card-glow/10 via-transparent to-card-glow/10" />
       <div className="absolute right-0 top-0 h-full w-0.5 bg-gradient-to-b from-transparent via-primary to-transparent opacity-50" />
-      
+
       <div className="relative z-10 flex flex-col h-full">
         {/* Logo/Brand Area */}
         <div className="p-4 border-b border-card-border/50">
@@ -45,7 +44,7 @@ export function VerticalNavbar({ currentSection, onSectionChange }: VerticalNavb
           {sections.map((section) => {
             const Icon = section.icon;
             const isActive = currentSection === section.id;
-            
+
             return (
               <motion.div
                 key={section.id}
@@ -59,15 +58,14 @@ export function VerticalNavbar({ currentSection, onSectionChange }: VerticalNavb
                   variant="ghost"
                   size="icon"
                   onClick={() => handleSectionChange(section.id)}
-                  className={`w-12 h-12 rounded-xl transition-all duration-300 ${
-                    isActive 
-                      ? 'bg-primary/20 text-primary border border-primary/30 shadow-lg shadow-primary/20' 
+                  className={`w-12 h-12 rounded-xl transition-all duration-300 ${isActive
+                      ? 'bg-primary/20 text-primary border border-primary/30 shadow-lg shadow-primary/20'
                       : 'hover:bg-card/30 text-muted-foreground hover:text-foreground'
-                  }`}
+                    }`}
                 >
                   <Icon className="w-5 h-5" />
                 </Button>
-                
+
                 {/* Active Indicator */}
                 {isActive && (
                   <motion.div
@@ -148,11 +146,10 @@ export function VerticalNavbar({ currentSection, onSectionChange }: VerticalNavb
               variant="ghost"
               size="icon"
               onClick={() => handleSectionChange('settings')}
-              className={`w-12 h-12 rounded-xl transition-all duration-300 ${
-                currentSection === 'settings'
-                  ? 'bg-primary/20 text-primary border border-primary/30 shadow-lg shadow-primary/20' 
+              className={`w-12 h-12 rounded-xl transition-all duration-300 ${currentSection === 'settings'
+                  ? 'bg-primary/20 text-primary border border-primary/30 shadow-lg shadow-primary/20'
                   : 'hover:bg-card/30 text-muted-foreground hover:text-foreground'
-              }`}
+                }`}
             >
               <Settings className="w-5 h-5" />
             </Button>

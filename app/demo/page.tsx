@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { FuturisticPerformancePage } from "../../components/dashboard/FuturisticPerformancePage";
 import { FuturisticIdentificationPage } from "../../components/dashboard/FuturisticIdentificationPage";
-import { EmailFlowDiagram } from "../../components/dashboard/EmailFlowDiagram";
 import { SettingsPage } from "../../components/dashboard/SettingsPage";
 import { ThemeProvider } from "../../components/dashboard/ThemeProvider";
 import { VerticalNavbar } from "../../components/dashboard/VerticalNavbar";
@@ -151,8 +150,6 @@ export default function App() {
         return <FuturisticPerformancePage />;
       case 'identifications':
         return <FuturisticIdentificationPage />;
-      case 'followup':
-        return <EmailFlowDiagram />;
       case 'data':
         return renderDataSection();
       case 'settings':
