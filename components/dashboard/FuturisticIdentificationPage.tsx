@@ -1,54 +1,23 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from './ThemeProvider';
-import { MultiColorThreatChart } from './MultiColorThreatChart';
-import  JobTrackingTable  from './GmailTable';
-import  {ContactsTable} from './ContactsTable';
+import { motion } from "framer-motion";
+import { JobApplicationChart } from './JobApplicationChart';
+import { JobApplicationsTable } from './JobApplicationsTable';
 
 import { TrendingUp } from "lucide-react";
 
 export function FuturisticIdentificationPage() {
-  const { theme } = useTheme();
-  const [scanAnimation, setScanAnimation] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScanAnimation(true);
-      setTimeout(() => setScanAnimation(false), 2000);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getAccentColor = () => theme === 'light' ? '#D2B48C' : '#FDE047';
-
   return (
     <div className="space-y-8 relative">
-      {/* Scanning Animation Overlay */}
-      <AnimatePresence>
-        {scanAnimation && (
-          <motion.div
-            initial={{ scaleY: 0, opacity: 0 }}
-            animate={{ scaleY: 1, opacity: 0.3 }}
-            exit={{ scaleY: 0, opacity: 0 }}
-            className="fixed inset-0 z-10 pointer-events-none"
-            style={{
-              background: `linear-gradient(180deg, transparent 0%, ${getAccentColor()}40 50%, transparent 100%)`
-            }}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Job List */}
-      <motion.div 
+      {/* Job Applications Table - FIRST */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
       >
-        <JobTrackingTable />
+        <JobApplicationsTable />
       </motion.div>
 
-      {/* Full Width Job Analytics Chart */}
-      <motion.div 
+      {/* Job Analytics Chart - SECOND (synced with table data) */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
@@ -58,9 +27,9 @@ export function FuturisticIdentificationPage() {
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-5 h-5 text-primary" />
-              <h2 className="text-foreground font-mono">JOB APPLICATION ANALYTICS</h2>
+              <h2 className="text-foreground font-mono">APPLICATION TRENDS</h2>
               <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
-              
+
               {/* Legend */}
               <div className="flex items-center gap-4 text-xs font-mono">
                 <div className="flex items-center gap-2">
@@ -81,20 +50,11 @@ export function FuturisticIdentificationPage() {
                 </div>
               </div>
             </div>
-            <div className="mb-6">
-              <MultiColorThreatChart />
+            <div className="mb-2">
+              <JobApplicationChart />
             </div>
           </div>
         </div>
-      </motion.div>
-
-      {/* Company Contacts Table */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-      >
-        <ContactsTable />
       </motion.div>
 
     </div>

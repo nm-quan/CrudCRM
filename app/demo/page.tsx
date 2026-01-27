@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { FuturisticPerformancePage } from "../../components/dashboard/FuturisticPerformancePage";
 import { FuturisticIdentificationPage } from "../../components/dashboard/FuturisticIdentificationPage";
-import  SubscriptionTracker  from '../../components/dashboard/FollowUpPage';
+import { EmailFlowDiagram } from "../../components/dashboard/EmailFlowDiagram";
 import { SettingsPage } from "../../components/dashboard/SettingsPage";
 import { ThemeProvider } from "../../components/dashboard/ThemeProvider";
 import { VerticalNavbar } from "../../components/dashboard/VerticalNavbar";
@@ -152,7 +152,7 @@ export default function App() {
       case 'identifications':
         return <FuturisticIdentificationPage />;
       case 'followup':
-        return <SubscriptionTracker />;
+        return <EmailFlowDiagram />;
       case 'data':
         return renderDataSection();
       case 'settings':
@@ -165,11 +165,11 @@ export default function App() {
   return (
     <ThemeProvider defaultTheme="dark">
       <div className="min-h-screen bg-background">
-        <VerticalNavbar 
-          currentSection={currentSection} 
-          onSectionChange={setCurrentSection} 
+        <VerticalNavbar
+          currentSection={currentSection}
+          onSectionChange={setCurrentSection}
         />
-        
+
         <div className="ml-20 min-h-screen">
           <div className="p-6">
             <div className="max-w-7xl mx-auto">
@@ -180,7 +180,7 @@ export default function App() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  transition={{ 
+                  transition={{
                     duration: 0.3,
                     ease: "easeInOut"
                   }}
