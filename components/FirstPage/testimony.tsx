@@ -7,42 +7,42 @@ import { useState, useRef, useEffect } from 'react';
 
 const cardColors = [
   {
-    background: "linear-gradient(135deg, #ff6b35 0%, #f4511e 100%)", 
+    background: "linear-gradient(135deg, #ff6b35 0%, #f4511e 100%)",
     borderTop: "#ff6b35",
     borderBottom: "#f4511e",
     text: "#ffffff",
     accent: "#ff8a65",
   },
   {
-    background: "linear-gradient(135deg, #ec407a 0%, #d81b60 100%)", 
-    borderTop: "#ec407a", 
+    background: "linear-gradient(135deg, #ec407a 0%, #d81b60 100%)",
+    borderTop: "#ec407a",
     borderBottom: "#d81b60",
     text: "#ffffff",
     accent: "#f06292",
   },
   {
-    background: "linear-gradient(135deg, #ffa726 0%, #fb8c00 100%)", 
+    background: "linear-gradient(135deg, #ffa726 0%, #fb8c00 100%)",
     borderTop: "#ffa726",
     borderBottom: "#fb8c00",
     text: "#1a1a1a",
     accent: "#ffb74d",
   },
   {
-    background: "linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%)", 
+    background: "linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%)",
     borderTop: "#8d6e63",
     borderBottom: "#6d4c41",
-    text: "#ffffff", 
+    text: "#ffffff",
     accent: "#a1887f",
   },
   {
-    background: "linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)", 
+    background: "linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)",
     borderTop: "#e0e0e0",
     borderBottom: "#bdbdbd",
     text: "#1a1a1a",
     accent: "#9e9e9e",
   },
   {
-    background: "linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%)", 
+    background: "linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%)",
     borderTop: "#5c6bc0",
     borderBottom: "#3949ab",
     text: "#ffffff",
@@ -62,7 +62,7 @@ const testimonies = [
     improvement: "+47% Customer Satisfaction"
   },
   {
-    name: "Marcus Rodriguez", 
+    name: "Marcus Rodriguez",
     position: "VP of Marketing",
     company: "GrowthLabs",
     rating: 5,
@@ -73,7 +73,7 @@ const testimonies = [
   },
   {
     name: "Jennifer Walsh",
-    position: "Customer Experience Director", 
+    position: "Customer Experience Director",
     company: "FinanceFirst",
     rating: 5,
     content: "Real-time sentiment analysis changed everything. We can resolve issues before they escalate and our NPS score has increased dramatically.",
@@ -87,7 +87,7 @@ const testimonies = [
     company: "StartupScale",
     rating: 5,
     content: "As a growing startup, understanding our customers is crucial. AIAgent gives us enterprise-level insights that help us compete with much larger companies.",
-    avatar: "DK", 
+    avatar: "DK",
     industry: "Startup",
     improvement: "+200% User Engagement"
   },
@@ -108,7 +108,7 @@ const testimonies = [
     rating: 5,
     content: "We launched three new features based on AIAgent insights and they all exceeded adoption targets. The customer behavior predictions are incredibly precise.",
     avatar: "AM",
-    industry: "Cloud Services", 
+    industry: "Cloud Services",
     improvement: "+150% Feature Adoption"
   }
 ];
@@ -119,7 +119,7 @@ export function TestimonySection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (_e: MouseEvent) => {
       if (expandedCard !== null) {
         setExpandedCard(null);
       }
@@ -135,7 +135,7 @@ export function TestimonySection() {
   }, [expandedCard]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="py-24 px-6 relative overflow-hidden isolate"
     >
@@ -153,31 +153,31 @@ export function TestimonySection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-         
+
           >
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm text-muted-foreground">Success Stories</span>
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             className="text-xl md:text-5xl mb-6 bg-gradient-to-r pb-4 from-foreground via-primary to-foreground bg-clip-text text-transparent "
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            
+
           >
             Trusted by Industry Leaders
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            See how companies across industries use AIAgent to transform their customer understanding 
+            See how companies across industries use AIAgent to transform their customer understanding
             and drive unprecedented growth.
           </motion.p>
         </motion.div>
@@ -203,7 +203,7 @@ export function TestimonySection() {
                 const testimony = testimonies[expandedCard];
                 const cardColor = cardColors[expandedCard % cardColors.length];
                 return (
-                  <div 
+                  <div
                     className="relative p-12 rounded-3xl backdrop-blur-xl border-4"
                     style={{
                       background: cardColor.background,
@@ -214,8 +214,8 @@ export function TestimonySection() {
                     <button
                       onClick={() => setExpandedCard(null)}
                       className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center text-2xl opacity-70 hover:opacity-100 transition-all duration-300 hover:scale-110"
-                      style={{ 
-                        backgroundColor: `${cardColor.accent}60`, 
+                      style={{
+                        backgroundColor: `${cardColor.accent}60`,
                         color: cardColor.text,
                         border: `2px solid ${cardColor.text}30`
                       }}
@@ -223,28 +223,28 @@ export function TestimonySection() {
                       ×
                     </button>
 
-                    <Quote 
-                      className="w-20 h-20 mb-8 opacity-60" 
+                    <Quote
+                      className="w-20 h-20 mb-8 opacity-60"
                       style={{ color: cardColor.text }}
                     />
 
                     <div className="flex gap-2 mb-8">
                       {[...Array(testimony.rating)].map((_, i) => (
-                        <Star 
+                        <Star
                           key={i}
-                          className="w-7 h-7" 
-                          style={{ 
-                            fill: cardColor.text, 
+                          className="w-7 h-7"
+                          style={{
+                            fill: cardColor.text,
                             color: cardColor.text,
                             opacity: 0.9
-                          }} 
+                          }}
                         />
                       ))}
                     </div>
 
-                    <p 
+                    <p
                       className="text-2xl mb-12 leading-relaxed"
-                      style={{ 
+                      style={{
                         color: cardColor.text,
                         textShadow: cardColor.text === '#ffffff' ? '0 1px 2px rgba(0,0,0,0.1)' : 'none'
                       }}
@@ -253,7 +253,7 @@ export function TestimonySection() {
                     </p>
 
                     <div className="flex items-center gap-6">
-                      <div 
+                      <div
                         className="w-24 h-24 rounded-2xl flex items-center justify-center text-2xl border-3"
                         style={{
                           backgroundColor: `${cardColor.text}15`,
@@ -264,25 +264,25 @@ export function TestimonySection() {
                         {testimony.avatar}
                       </div>
                       <div>
-                        <h3 
+                        <h3
                           className="text-2xl mb-2"
                           style={{ color: cardColor.text }}
                         >
                           {testimony.name}
                         </h3>
-                        <p 
+                        <p
                           className="text-lg opacity-80 mb-1"
                           style={{ color: cardColor.text }}
                         >
                           {testimony.position}
                         </p>
-                        <p 
+                        <p
                           className="text-lg opacity-80 mb-4"
                           style={{ color: cardColor.text }}
                         >
                           {testimony.company}
                         </p>
-                        <Badge 
+                        <Badge
                           className="text-base px-4 py-2"
                           style={{
                             backgroundColor: `${cardColor.text}20`,
@@ -305,29 +305,29 @@ export function TestimonySection() {
         {/* Testimonies in 3 Rows */}
         <div className="space-y-12 overflow-visible">
           {[0, 1, 2].map((rowIndex) => (
-            <div 
-              key={rowIndex} 
+            <div
+              key={rowIndex}
               className="grid grid-cols-1 md:grid-cols-2 gap-8"
             >
               {testimonies.slice(rowIndex * 2, rowIndex * 2 + 2).map((testimony, cardIndex) => {
                 const index = rowIndex * 2 + cardIndex;
                 const cardColor = cardColors[index % cardColors.length];
-                
+
                 return (
                   <motion.div
                     key={index}
-                    initial={{ 
+                    initial={{
                       opacity: 0,
                       y: 50,
                       scale: 0.95
                     }}
-                    whileInView={{ 
+                    whileInView={{
                       opacity: 1,
                       y: 0,
                       scale: 1
                     }}
-                    transition={{ 
-                      duration: 0.6, 
+                    transition={{
+                      duration: 0.6,
                       delay: cardIndex * 0.1,
                       ease: "easeOut"
                     }}
@@ -347,7 +347,7 @@ export function TestimonySection() {
                     }}
                     className="group cursor-pointer"
                   >
-                    <div 
+                    <div
                       className="relative h-full p-8 rounded-3xl backdrop-blur-sm overflow-hidden transition-all duration-300 min-h-[420px] flex flex-col"
                       style={{
                         background: cardColor.background,
@@ -361,24 +361,24 @@ export function TestimonySection() {
                       {/* Top accent line */}
                       <div
                         className="absolute top-0 left-0 right-0 h-1 opacity-30"
-                        style={{ 
+                        style={{
                           background: `linear-gradient(90deg, transparent, ${cardColor.borderTop}, transparent)`
                         }}
                       />
 
                       {/* Header section */}
                       <div className="flex justify-between items-start mb-6 relative z-10">
-                        <Quote 
-                          className="w-10 h-10 opacity-70 transition-transform duration-300 group-hover:scale-110" 
-                          style={{ 
+                        <Quote
+                          className="w-10 h-10 opacity-70 transition-transform duration-300 group-hover:scale-110"
+                          style={{
                             color: cardColor.text,
                             filter: `drop-shadow(0 2px 4px ${cardColor.text}20)`
                           }}
                         />
-                        <Badge 
-                          variant="outline" 
+                        <Badge
+                          variant="outline"
                           className="border-0 text-xs"
-                          style={{ 
+                          style={{
                             backgroundColor: `${cardColor.text}20`,
                             color: cardColor.text,
                             fontWeight: 500
@@ -391,34 +391,34 @@ export function TestimonySection() {
                       {/* Stars */}
                       <div className="flex gap-1 mb-5 relative z-10">
                         {[...Array(testimony.rating)].map((_, i) => (
-                          <Star 
+                          <Star
                             key={i}
-                            className="w-5 h-5 transition-transform duration-200 hover:scale-125" 
-                            style={{ 
-                              fill: cardColor.text, 
+                            className="w-5 h-5 transition-transform duration-200 hover:scale-125"
+                            style={{
+                              fill: cardColor.text,
                               color: cardColor.text,
                               opacity: 0.9
-                            }} 
+                            }}
                           />
                         ))}
                       </div>
 
                       {/* Content */}
-                      <p 
+                      <p
                         className="mb-6 leading-relaxed relative z-10 flex-grow"
-                        style={{ 
+                        style={{
                           color: cardColor.text,
                           textShadow: cardColor.text === '#ffffff' ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
                           fontSize: '0.95rem',
                           fontWeight: 400
                         }}
                       >
-                          {`"${testimony.content}"`}
+                        {`"${testimony.content}"`}
                       </p>
 
                       {/* Improvement badge */}
                       <div className="mb-6 relative z-10 mt-auto">
-                        <Badge 
+                        <Badge
                           className="border-0 text-xs inline-flex items-center gap-1 transition-transform duration-200 hover:scale-105"
                           style={{
                             backgroundColor: `${cardColor.text}25`,
@@ -434,7 +434,7 @@ export function TestimonySection() {
 
                       {/* Author section */}
                       <div className="flex items-center gap-4 relative z-10">
-                        <div 
+                        <div
                           className="w-14 h-14 rounded-2xl flex items-center justify-center border-2 transition-transform duration-300 group-hover:scale-110"
                           style={{
                             backgroundColor: `${cardColor.text}15`,
@@ -447,9 +447,9 @@ export function TestimonySection() {
                           {testimony.avatar}
                         </div>
                         <div>
-                          <h4 
+                          <h4
                             className="mb-0.5"
-                            style={{ 
+                            style={{
                               color: cardColor.text,
                               fontSize: '1rem',
                               fontWeight: 500
@@ -457,13 +457,13 @@ export function TestimonySection() {
                           >
                             {testimony.name}
                           </h4>
-                          <p 
+                          <p
                             className="text-sm opacity-85"
                             style={{ color: cardColor.text }}
                           >
                             {testimony.position}
                           </p>
-                          <p 
+                          <p
                             className="text-sm opacity-85"
                             style={{ color: cardColor.text }}
                           >
@@ -480,7 +480,7 @@ export function TestimonySection() {
         </div>
 
         {/* Bottom CTA */}
-        
+
       </div>
     </section>
   );

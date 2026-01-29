@@ -1,8 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from './ThemeProvider';
-import { Search, Plus, Briefcase, Check, X, Edit3, ChevronUp, ChevronDown, Trash2, Loader2, ExternalLink, RefreshCw, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Search, Plus, Briefcase, Check, X, Edit3, ChevronUp, ChevronDown, Trash2, Loader2, ExternalLink, RefreshCw } from "lucide-react";
 import { createClient } from '@/utils/supabase/client';
 
 // Job Application interface - you'll need to create this table in Supabase
@@ -18,7 +17,6 @@ interface JobApplication {
 const supabase = createClient();
 
 export function JobApplicationsTable() {
-    const { theme } = useTheme();
     const [searchTerm, setSearchTerm] = useState('');
     const [jobs, setJobs] = useState<JobApplication[]>([]);
     const [loading, setLoading] = useState(true);
@@ -29,7 +27,6 @@ export function JobApplicationsTable() {
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
     const [isAddingNew, setIsAddingNew] = useState(false);
     const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
-    const [syncStatus, setSyncStatus] = useState<'connected' | 'offline' | 'loading'>('loading');
     const [newJob, setNewJob] = useState<Partial<JobApplication>>({
         Position: '',
         Company: '',
@@ -38,39 +35,35 @@ export function JobApplicationsTable() {
         Link: ''
     });
 
-    // Fetch jobs from Supabase
-    useEffect(() => {
-        fetchJobs();
-    }, []);
-
-    const fetchJobs = async () => {
+    const fetchJobs = useCallback(async () => {
         try {
             setLoading(true);
             setError(null);
-            setSyncStatus('loading');
 
-            const { data, error } = await supabase
+            const { data, error: fetchError } = await supabase
                 .from('job_application')
                 .select('*')
                 .order('id', { ascending: false });
 
-            if (error) {
-                console.log('Job application table issue:', error.message);
-                setSyncStatus('offline');
+            if (fetchError) {
+                console.log('Job application table issue:', fetchError.message);
                 // Keep existing jobs if any, or empty
-                if (jobs.length === 0) setJobs([]);
+                setJobs(prev => prev.length === 0 ? [] : prev);
                 return;
             }
 
-            setSyncStatus('connected');
             setJobs(data || []);
-        } catch (err) {
+        } catch (_err) {
             console.log('Connection error');
-            setSyncStatus('offline');
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
+
+    // Fetch jobs from Supabase
+    useEffect(() => {
+        fetchJobs();
+    }, [fetchJobs]);
 
     const getStatusColor = (status: string | null) => {
         switch (status) {
@@ -130,13 +123,7 @@ export function JobApplicationsTable() {
             }
         });
 
-    // Calculate stats from ALL jobs
-    const stats = {
-        applied: jobs.filter(j => j.Status === 'Applied').length,
-        interview: jobs.filter(j => j.Status === 'Interview').length,
-        offer: jobs.filter(j => j.Status === 'Offer').length,
-        rejected: jobs.filter(j => j.Status === 'Rejected').length,
-    };
+
 
     const formatDate = (dateString: string | null) => {
         if (!dateString) return 'N/A';
@@ -180,7 +167,7 @@ export function JobApplicationsTable() {
                     ? { ...job, [editingCell.field]: editValue }
                     : job
             ));
-        } catch (err) {
+        } catch (_err) {
             console.log('Updating job locally (error)');
             // Still update local state
             setJobs(jobs.map(job =>
@@ -231,7 +218,7 @@ export function JobApplicationsTable() {
                 DateApplied: new Date().toISOString().split('T')[0],
                 Link: ''
             });
-        } catch (err) {
+        } catch (_err) {
             console.log('Adding job locally (error)');
             const tempJob: JobApplication = {
                 id: Date.now(),
@@ -269,7 +256,7 @@ export function JobApplicationsTable() {
             // Always update local state
             setJobs(jobs.filter(j => !selectedIds.has(j.id)));
             setSelectedIds(new Set());
-        } catch (err) {
+        } catch (_err) {
             console.log('Deleting jobs locally (error)');
             setJobs(jobs.filter(j => !selectedIds.has(j.id)));
             setSelectedIds(new Set());

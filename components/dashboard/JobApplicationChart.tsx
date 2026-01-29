@@ -1,6 +1,5 @@
 'use client';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { useTheme } from './ThemeProvider';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { Loader2, RefreshCw } from 'lucide-react';
@@ -21,7 +20,6 @@ const COLORS = {
 };
 
 export function JobApplicationChart() {
-    const { theme } = useTheme();
     const [chartData, setChartData] = useState<{ name: string; value: number; color: string }[]>([]);
     const [loading, setLoading] = useState(true);
     const [total, setTotal] = useState(0);
@@ -67,7 +65,7 @@ export function JobApplicationChart() {
 
             // Convert to chart format
             const pieData = Object.entries(statusCounts)
-                .filter(([_, count]) => count > 0)
+                .filter(([, count]) => count > 0)
                 .map(([name, value]) => ({
                     name,
                     value,
@@ -101,7 +99,7 @@ export function JobApplicationChart() {
         }
     };
 
-    const CustomTooltip = ({ active, payload }: any) => {
+    const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ payload: { name: string; value: number; color: string } }> }) => {
         if (active && payload && payload.length) {
             const data = payload[0].payload;
             return (
@@ -118,7 +116,7 @@ export function JobApplicationChart() {
         return null;
     };
 
-    const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name }: any) => {
+    const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: { cx: number; cy: number; midAngle: number; innerRadius: number; outerRadius: number; percent: number }) => {
         if (percent < 0.08) return null; // Don't show label for very small slices
 
         const RADIAN = Math.PI / 180;

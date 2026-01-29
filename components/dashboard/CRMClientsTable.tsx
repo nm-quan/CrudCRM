@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from './ThemeProvider';
 import { Search, Plus, Users, Check, X, Edit3, ChevronUp, ChevronDown, Trash2, Loader2 } from "lucide-react";
 import { createClient } from '@/utils/supabase/client';
 
@@ -18,7 +17,6 @@ interface Customer {
 const supabase = createClient();
 
 export function CRMClientsTable() {
-  const { theme } = useTheme();
   const [searchTerm, setSearchTerm] = useState('');
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
@@ -58,7 +56,7 @@ export function CRMClientsTable() {
         return;
       }
       setCustomers(data || []);
-    } catch (err) {
+    } catch (_err) {
       console.log('Using empty state for customers table');
       setCustomers([]);
     } finally {
@@ -125,13 +123,7 @@ export function CRMClientsTable() {
       }
     });
 
-  // Calculate stats from ALL customers (not filtered)
-  const stats = {
-    active: customers.filter(c => c.Status === 'Active').length,
-    prospects: customers.filter(c => c.Status === 'Prospect').length,
-    leads: customers.filter(c => c.Status === 'Lead').length,
-    churned: customers.filter(c => c.Status === 'Churned').length,
-  };
+
 
   const formatDate = (dateString: string | null) => {
     if (!dateString) return 'N/A';
@@ -175,7 +167,7 @@ export function CRMClientsTable() {
           ? { ...customer, [editingCell.field]: editValue }
           : customer
       ));
-    } catch (err) {
+    } catch (_err) {
       console.log('Updating customer locally (error)');
       setCustomers(customers.map(customer =>
         customer.id === editingCell.customerId
@@ -224,7 +216,7 @@ export function CRMClientsTable() {
         Contact: '',
         LastContact: new Date().toISOString().split('T')[0]
       });
-    } catch (err) {
+    } catch (_err) {
       console.log('Adding customer locally (error)');
       const tempCustomer: Customer = {
         id: Date.now(),
@@ -248,13 +240,13 @@ export function CRMClientsTable() {
 
   const deleteCustomer = async (id: number) => {
     try {
-      const { error } = await supabase
+      const { error: deleteError } = await supabase
         .from('customer')
         .delete()
         .eq('id', id);
 
-      if (error) {
-        console.log('Deleting customer locally (table may not exist):', error.message);
+      if (deleteError) {
+        console.log('Deleting customer locally (table may not exist):', deleteError.message);
       }
 
       // Always update local state
@@ -264,7 +256,7 @@ export function CRMClientsTable() {
         newSet.delete(id);
         return newSet;
       });
-    } catch (err) {
+    } catch (_err) {
       console.log('Deleting customer locally (error)');
       setCustomers(customers.filter(c => c.id !== id));
       setSelectedIds(prev => {
@@ -291,7 +283,7 @@ export function CRMClientsTable() {
       // Always update local state
       setCustomers(customers.filter(c => !selectedIds.has(c.id)));
       setSelectedIds(new Set());
-    } catch (err) {
+    } catch (_err) {
       console.log('Deleting customers locally (error)');
       setCustomers(customers.filter(c => !selectedIds.has(c.id)));
       setSelectedIds(new Set());

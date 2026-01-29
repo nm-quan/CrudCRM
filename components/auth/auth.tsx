@@ -10,7 +10,6 @@ export default function KalanoAuth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isLightMode, setIsLightMode] = useState(false);
 
 
   const handleSubmit = async (e: React.FormEvent) => {

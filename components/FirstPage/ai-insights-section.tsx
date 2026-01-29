@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
-import { Brain, Users, BarChart3, MessageSquare, Target, Lightbulb, TrendingUp, DollarSign, Zap } from 'lucide-react';
+import { Brain, Users, BarChart3, MessageSquare, Target, TrendingUp, DollarSign } from 'lucide-react';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const insightCards = [
@@ -16,7 +16,7 @@ const insightCards = [
   },
   {
     icon: Users,
-    title: "Segment Intelligence", 
+    title: "Segment Intelligence",
     metric: "12 Auto-Segments",
     description: "AI automatically identifies and creates customer segments based on behavior and engagement.",
     dataPoints: ["High-value users", "At-risk customers", "Growth opportunities"]
@@ -87,7 +87,7 @@ export function AIInsightsSection() {
             How AI Agents Improve Customer Understanding
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our AI agents continuously learn and adapt, building deeper customer insights 
+            Our AI agents continuously learn and adapt, building deeper customer insights
             that drive meaningful business outcomes.
           </p>
         </motion.div>
@@ -113,13 +113,13 @@ export function AIInsightsSection() {
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                   <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" />
                   <YAxis stroke="hsl(var(--muted-foreground))" />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'hsl(var(--card))', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--card))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
                       color: 'hsl(var(--foreground))'
-                    }} 
+                    }}
                   />
                   <Area type="monotone" dataKey="rate" stroke="hsl(var(--foreground))" fill="hsl(var(--muted))" strokeWidth={2} />
                 </AreaChart>
@@ -148,13 +148,13 @@ export function AIInsightsSection() {
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: '#ffffff', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#ffffff',
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       color: '#1a1a1a'
-                    }} 
+                    }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -180,13 +180,13 @@ export function AIInsightsSection() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#d6d3d1" />
                   <XAxis dataKey="quarter" stroke="#78716c" />
                   <YAxis stroke="#78716c" />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: '#ffffff', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#ffffff',
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       color: '#1a1a1a'
-                    }} 
+                    }}
                   />
                   <Bar dataKey="efficiency" fill="#1a1a1a" />
                   <Bar dataKey="accuracy" fill="#525252" />
@@ -207,13 +207,13 @@ export function AIInsightsSection() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#d6d3d1" />
                   <XAxis dataKey="month" stroke="#78716c" />
                   <YAxis stroke="#78716c" />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: '#ffffff', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#ffffff',
                       border: '1px solid #d6d3d1',
                       borderRadius: '8px',
                       color: '#1a1a1a'
-                    }} 
+                    }}
                   />
                   <Line type="monotone" dataKey="roi" stroke="#1a1a1a" strokeWidth={3} dot={{ fill: '#1a1a1a', strokeWidth: 2, r: 4 }} />
                 </LineChart>
@@ -248,9 +248,9 @@ export function AIInsightsSection() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <p className="text-stone-700 mb-4 leading-relaxed">{card.description}</p>
-                  
+
                   <div className="space-y-2">
                     <span className="text-sm text-stone-600 block">Key Data Points:</span>
                     <div className="flex flex-wrap gap-2">
@@ -283,7 +283,7 @@ export function AIInsightsSection() {
               <BarChart3 className="w-6 h-6 text-gray-600" />
               <h3 className="text-2xl text-black">Real-Time Customer Intelligence Dashboard</h3>
             </div>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
@@ -300,7 +300,7 @@ export function AIInsightsSection() {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-stone-700">Engagement Rate</span>
@@ -316,7 +316,7 @@ export function AIInsightsSection() {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-stone-700">Prediction Accuracy</span>
