@@ -1,8 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <h1 align="center">CRUD Template for CRM / Cold Email Tracker</h1>
+</p>
 
-## Getting Started
+<p align="center">
+  A simple, extensible CRUD-based template designed for building CRM systems or cold email tracking tools.
+</p>
 
-First, run the development server:
+---
+
+## Key Features
+
+### 1. Database Integration — Supabase
+Robust backend powered by Supabase for data storage and real-time capabilities.
+
+<p align="center">
+  <img src="public/black.png" alt="Supabase Black Logo" width="120" />
+  <img src="public/white.png" alt="Supabase White Logo" width="120" />
+</p>
+
+---
+
+### 2. Pretty Good UI (imo)
+Clean, modern interface focused on usability and clarity.
+
+<p align="center">
+  <img src="public/landingpage.png" alt="Landing Page Screenshot" width="600" />
+  <br />
+  <img src="public/testimony.png" alt="Testimony Section Screenshot" width="600" />
+</p>
+
+---
+
+### 3. Authentication Implementation (Google OAuth)
+Secure authentication flow using Google OAuth.
+
+<p align="center">
+  <img src="public/auth.png" alt="Google OAuth Authentication" width="600" />
+</p>
+
+---
+
+### 4. Search Feature
+Quick and efficient search functionality to filter and locate records easily.
+
+<p align="center">
+  <img src="public/search.png" alt="Search Feature Screenshot" width="600" />
+</p>
+
+---
+
+##  Use Cases
+- CRM systems  
+- Cold email tracking  
+- Internal dashboards  
+- Startup MVPs  
+- Admin panels  
+
+---
+
+## Tech Stack
+- Frontend: *(add your framework here — e.g. Next.js, React)
+- Backend: Supabase  
+- Auth: Google OAuth  
+- Database: PostgreSQL (via Supabase)
+
+
+## Get Started 
+
+To run the development server:
 
 ```bash
 npm run dev
@@ -13,24 +78,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
