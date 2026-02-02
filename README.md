@@ -14,8 +14,8 @@
 Robust backend powered by Supabase for data storage and real-time capabilities.
 
 <p align="center">
-  <img src="public/black.png" alt="Supabase Black Logo" width="120" />
-  <img src="public/white.png" alt="Supabase White Logo" width="120" />
+  <img src="public/black.png" alt="Supabase Black Logo" width="600" />
+  <img src="public/white.png" alt="Supabase White Logo" width="600" />
 </p>
 
 ---
